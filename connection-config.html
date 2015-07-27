@@ -1,0 +1,78 @@
+<script type="text/javascript">
+    RED.nodes.registerType('connection-config',{
+        category: 'config',
+        defaults: {
+            name: {value:'', required: true},
+            consumerKey: {required: true},
+            consumerSecret: {required: true},
+            callbackUrl: {required: true},
+            environment: {value: 'production', required: true},
+            username: {required: true},
+            password: {required: true},
+        },
+        label: function() {
+            return this.name || this.username + ' connection';
+        },
+      	oneditprepare: function() {
+
+      		setTimeout(function () {
+      			var jqCurDialog = $("[aria-describedby='node-config-dialog']:visible");
+      			var dialogWidth = ($(window).width() - 100);
+      			if (dialogWidth > 700) {
+      				dialogWidth = 700;
+      			}
+      			jqCurDialog.css('width', dialogWidth);
+      			jqCurDialog.css('left', (($(window).width() - dialogWidth) / 2));
+      			// jqCurDialog.css('min-height', '580px');
+            // increase for form field size
+            $(".form-row label").width('150px');
+      		}, 0);
+
+        },
+        // reset the form label size
+        oneditsave: function() {
+          $(".form-row label").width('100px');
+        },
+        // reset the form label size
+        oneditcancel: function() {
+          $(".form-row label").width('100px');
+        },
+        oneditdelete: function() {
+          $(".form-row label").width('100px');
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="connection-config">
+    <div class="form-row">
+        <label for="node-config-input-name"><i class="icon-bookmark"></i> Name</label>
+        <input type="text" id="node-config-input-name">
+    </div>
+    <div class="form-row" style="white-space:nowrap">
+        <label for="node-config-input-consumerKey"><i class="fa fa-key"></i> Consumer Key</label>
+        <input type="text" id="node-config-input-consumerKey">
+    </div>
+    <div class="form-row" style="white-space:nowrap">
+        <label for="node-config-input-consumerSecret"><i class="fa fa-user-secret"></i> Consumer Secret</label>
+        <input type="password" id="node-config-input-consumerSecret">
+    </div>
+    <div class="form-row" style="white-space:nowrap">
+        <label for="node-config-input-callbackUrl"><i class="fa fa-history"></i> Callback URL</label>
+        <input type="text" id="node-config-input-callbackUrl" placeholder="http://localhost:3000/oauth/_callback">
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-environment"><i class="fa fa-tasks"></i> Environment</label>
+        <select id="node-config-input-environment">
+          <option value="production">Production</option>
+          <option value="sandbox">Sandbox</option>
+        </select>
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-username"><i class="fa fa-user"></i> Username</label>
+        <input type="text" id="node-config-input-username">
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-password"><i class="fa fa-lock"></i> Password</label>
+        <input type="password" id="node-config-input-password">
+    </div>
+</script>

@@ -1,0 +1,38 @@
+<script type="text/javascript">
+    RED.nodes.registerType('soql-query',{
+        category: 'Salesforce',
+        color: '#C0DEED',
+        defaults: {
+          name: {value:""},
+          soql: {value:""},
+          connection: {value:"", type:"connection-config", required: true}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "salesforce.png",
+        label: function() {
+            return this.name||"soql query";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="soql-query">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-google"><i class="fa fa-plug"></i> Connection</label>
+        <input type="text" id="node-input-connection">
+    </div>
+    <div class="form-row">
+        <label for="node-input-soql"><i class="fa fa-database"></i> Query</label>
+        <textarea id="node-input-soql" style="width:300px"></textarea>
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="soql-query">
+    <p>Executes a SOQL query.</p>
+    <p>The query can be configured in the node, however if left blank, the query should be set in an incoming message on <code>msg.soql</code>.</p>
+    <p>See the <a href="https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl" target="_blank">Salesforce SOQL documentation</a> for more information.</p>
+</script>

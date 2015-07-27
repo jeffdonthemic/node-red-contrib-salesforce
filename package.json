@@ -1,0 +1,23 @@
+{
+  "name": "node-red-contrib-salesforce",
+  "version": "0.0.1",
+  "description": "bunch of salesforce nodes",
+  "author": {
+    "name": "Jeff Douglas",
+    "url": "http://bloe.jeffdouglas.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/jeffdonthemic/node-red-contrib-salesforce.git"
+  },
+  "keywords": [
+    "node-red",
+    "salesforce",
+    "forcedotcom"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "lodash": "^3.10.0",
+    "nforce": "^1.2.0"
+  }
+}
