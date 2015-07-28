@@ -11,9 +11,9 @@ module.exports = function(RED) {
       // show initial status of progress
       node.status({fill:"green",shape:"ring",text:"connecting...."});
 
-      // use msg soql if node's soql is blank
-      if (msg.hasOwnProperty("soql") && config.soql === '') {
-        config.soql = msg.soql;
+      // use msg query if node's query is blank
+      if (msg.hasOwnProperty("query") && config.query === '') {
+        config.query = msg.query;
       }
 
       // create connection object
@@ -27,7 +27,7 @@ module.exports = function(RED) {
 
       // auth and run query
       org.authenticate({ username: this.connection.username, password: this.connection.password }).then(function(){
-        return org.query({ query: config.soql })
+        return org.query({ query: config.query })
       }).then(function(results) {
         msg.payload = {
           size: results.totalSize,
@@ -42,5 +42,5 @@ module.exports = function(RED) {
 
     });
   }
-  RED.nodes.registerType("soql-query",Query);
+  RED.nodes.registerType("soql",Query);
 }

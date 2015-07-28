@@ -13,11 +13,36 @@ npm install node-red-contrib-salesforce
 
 ## Usage
 
-### Query
+Each node uses a connection objct to hold and share Salesforce connected app settings (consumer key, consumer secret, username, etc.). This determines the org that each node operates against.
+
+### SOQL
 
 <p>Executes a SOQL query.</p>
-<p>The query can be configured in the node, however if left blank, the query should be set in an incoming message on <code>msg.soql</code>.</p>
+<pre>
+select id, name
+from contact
+limit 2
+</pre>
+<p>The resulting message has the following properties:
+<ul><li>msg.payload.size - the number of records returned from the query.</li>
+<li>msg.payload.records - the array of records returned from the query.</li>
+</ul></p>
+<p>The query can be configured in the node, however if left blank, the query should be set in an incoming message on <code>msg.query</code>.</p>
 <p>See the <a href="https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl" target="_blank">Salesforce SOQL documentation</a> for more information.</p>
+
+### SOSL
+
+<p>Executes a SOSL query.</p>
+<pre>
+FIND {united*} IN ALL FIELDS
+RETURNING Account (Id, Name), Contact (Id, Name)
+</pre>
+<p>The resulting message has the following properties:
+<ul><li>msg.payload.size - the number of records returned from the query.</li>
+<li>msg.payload.records - the array of records returned from the query.</li>
+</ul></p>
+<p>The query can be configured in the node, however if left blank, the query should be set in an incoming message on <code>msg.query</code>.</p>
+<p>See the <a href="https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_sosl.htm" target="_blank">Salesforce SOQL documentation</a> for more information.</p>
 
 ### DML
 

@@ -1,0 +1,46 @@
+<script type="text/javascript">
+    RED.nodes.registerType('sosl',{
+        category: 'Salesforce',
+        color: '#C0DEED',
+        defaults: {
+          name: {value:""},
+          query: {value:""},
+          connection: {value:"", type:"connection-config", required: true}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "salesforce.png",
+        label: function() {
+            return this.name||"sosl query";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="sosl">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-google"><i class="fa fa-plug"></i> Connection</label>
+        <input type="text" id="node-input-connection">
+    </div>
+    <div class="form-row">
+        <label for="node-input-query"><i class="fa fa-database"></i> Query</label>
+        <textarea id="node-input-query" style="width:300px"></textarea>
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="sosl">
+    <p>Executes a SOSL query.</p>
+<pre>
+  FIND {united*} IN ALL FIELDS
+  RETURNING Account (Id, Name), Contact (Id, Name)
+</pre>
+    <p>The resulting message has the following properties:
+    <ul><li>msg.payload.size - the number of records returned from the query.</li>
+    <li>msg.payload.records - the array of records returned from the query.</li>
+    </ul></p>
+    <p>The query can be configured in the node, however if left blank, the query should be set in an incoming message on <code>msg.query</code>.</p>
+    <p>See the <a href="https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_sosl.htm" target="_blank">Salesforce SOQL documentation</a> for more information.</p>
+</script>
