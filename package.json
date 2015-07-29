@@ -15,6 +15,13 @@
     "salesforce",
     "forcedotcom"
   ],
+  "node-red"     : {
+      "nodes": {
+          "soql": "soql.js",
+          "sosl": "sosl.js",
+          "dml": "dml.js"
+      }
+  },  
   "license": "MIT",
   "dependencies": {
     "lodash": "^3.10.0",
