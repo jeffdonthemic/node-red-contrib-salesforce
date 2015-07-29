@@ -1,6 +1,6 @@
 {
   "name": "node-red-contrib-salesforce",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A set of Node-RED nodes to interact with Salesforce and Force.com.",
   "author": {
     "name": "Jeff Douglas",
@@ -21,7 +21,7 @@
           "sosl": "sosl.js",
           "dml": "dml.js"
       }
-  },  
+  },
   "license": "MIT",
   "dependencies": {
     "lodash": "^3.10.0",
