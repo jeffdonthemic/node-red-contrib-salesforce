@@ -19,7 +19,8 @@
       "nodes": {
           "soql": "soql.js",
           "sosl": "sosl.js",
-          "dml": "dml.js"
+          "dml": "dml.js",
+          "connection-config": "connection-config.js"
       }
   },
   "license": "MIT",
