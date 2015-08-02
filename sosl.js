@@ -33,7 +33,6 @@ module.exports = function(RED) {
           size: results.length,
           records: results
         }
-        console.log(msg.payload);
         msg.payload = results;
         node.send(msg);
         node.status({});
