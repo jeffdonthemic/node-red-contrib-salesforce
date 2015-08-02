@@ -12,6 +12,14 @@ module.exports = function(RED) {
       // show initial status of progress
       node.status({fill:"green",shape:"ring",text:"connecting...."});
 
+      // check for overriding message properties
+      if (msg.hasOwnProperty("action") && config.action === '') {
+        config.action = msg.action;
+      }
+      if (msg.hasOwnProperty("object") && config.object === '') {
+        config.object = msg.object;
+      }
+
       // create connection object
       var org = nforce.createConnection({
         clientId: this.connection.consumerKey,
