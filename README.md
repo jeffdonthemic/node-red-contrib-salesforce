@@ -42,7 +42,7 @@ RETURNING Account (Id, Name), Contact (Id, Name)
 <li>msg.payload.records - the array of records returned from the query.</li>
 </ul></p>
 <p>The query can be configured in the node, however if left blank, the query should be set in an incoming message on <code>msg.query</code>.</p>
-<p>See the <a href="https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_sosl.htm" target="_blank">Salesforce SOQL documentation</a> for more information.</p>
+<p>See the <a href="https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_sosl.htm" target="_blank">Salesforce SOSL documentation</a> for more information.</p>
 
 ### DML
 
@@ -70,7 +70,7 @@ lastname: "Tesla"
 }</pre>
 <p>Sample <code>msg.externalId</code> specifying the field and value to be used for matching.</p>
 <pre>{
-field: "Ext_ID__c",
+field: "Ext_ID_c",
 value: "12345"
 }</pre>
 <p>If record(s) are updated, the resulting payload will resemble:</p>
@@ -100,3 +100,41 @@ value: "12345"
 "id": "00337000002uwUVAAY"
 }</pre>
 <p>See the <a href="https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_dml_section.htm#apex_dml_insert" target="_blank">Apex DML Operations</a> for more information.</p>
+
+### Streaming
+
+<p>Creates a client that subscribes to a PushTopic for the Streaming API.</p>
+<p>When the client receives a message it sends `msg.payload` with the following:
+<ul><li>msg.payload.event - the information on the event that was received.</li>
+<li>msg.payload.sobject - the sobject information received.</li>
+</ul></p>
+<p>Assuming the PushTopic was created with the query <code>SELECT Id, Name FROM Contact</code>, then a resulting message would look like:</p>
+<pre>{
+"event": {
+"type": "updated", "createdDate": "2015-07-31T18:38:21.000+0000"
+},
+"sobject": {
+"Name": "Nikola Tesla", "Id": "a0037000001pplrZZZ"
+}
+}</pre>
+<p>See the <a href="https://developer.salesforce.com/docs/atlas.en-us.api_streaming.meta/api_streaming/quick_start_workbench.htm">Quick Start Using Workbench</a> to get started or the <a href="https://developer.salesforce.com/docs/atlas.en-us.api_streaming.meta/api_streaming/" target="_blank">Streaming API documentation</a> for complete details.</p>
+
+# OBM
+
+<p>When used with an http in node, parses the XML from a Salesforce Outbound Message to a JSON object.</p>
+<p>The resulting <code>msg.payload</code> should look something like:
+<pre>{
+"organizationId": "00D37000000PdLZAE1",
+"actionId": "04k370000008OrqZZE",
+"sobject": {
+"type": "Contact",
+"id": "a0037000001I1EvWWO",
+"name": "Nikola Tesla",
+"firstname": "Nikola",
+"lastname": "Tesla"
+},
+"sessionId": "00D37000000PdLB!"
+}</pre>
+</p>
+<p>Connect this node downstream from a POST http input node to parse the XML received from an Outbound Message call from Salesforce. Use the URL from the http in node for the Endpoint URL for your Outbound Message.</p>
+<p>See the <a href="https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_om_outboundmessaging_setting_up.htm" target="_blank">Salesforce Setting Up Outbound Messaging documentation</a> for more information.</p>
