@@ -47,6 +47,7 @@ RETURNING Account (Id, Name), Contact (Id, Name)
 ### DML
 
 <p>Executes an insert, update, upsert or delete DML statement.</p>
+<p>The action and object can be configured in the node, however if left blank, the following should be set in an incoming message:<ul><li><code>msg.action</code> - the DML action to perform</li><li><code>msg.object</code> - the sObject for the DML action</li></ul></p>
 <p><b>Insert Action</b></p>
 <p>This action inserts the contents of <code>msg.payload</code> and returns the newly created ID.</p>
 <pre>{
