@@ -28,7 +28,7 @@ limit 2
 <li>msg.payload.records - the array of records returned from the query.</li>
 </ul></p>
 <p>The query can be configured in the node, however if left blank, the query should be set in an incoming message on <code>msg.query</code>.</p>
-<p>See the <a href="https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl" target="_blank">Salesforce SOQL documentation</a> for more information.</p>
+<p>See the <a href="https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl">Salesforce SOQL documentation</a> for more information.</p>
 
 ### SOSL
 
@@ -42,7 +42,7 @@ RETURNING Account (Id, Name), Contact (Id, Name)
 <li>msg.payload.records - the array of records returned from the query.</li>
 </ul></p>
 <p>The query can be configured in the node, however if left blank, the query should be set in an incoming message on <code>msg.query</code>.</p>
-<p>See the <a href="https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_sosl.htm" target="_blank">Salesforce SOSL documentation</a> for more information.</p>
+<p>See the <a href="https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_sosl.htm">Salesforce SOSL documentation</a> for more information.</p>
 
 ### DML
 
@@ -99,7 +99,7 @@ value: "12345"
 <pre>{
 "id": "00337000002uwUVAAY"
 }</pre>
-<p>See the <a href="https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_dml_section.htm#apex_dml_insert" target="_blank">Apex DML Operations</a> for more information.</p>
+<p>See the <a href="https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_dml_section.htm#apex_dml_insert">Apex DML Operations</a> for more information.</p>
 
 ### Streaming
 
@@ -117,9 +117,9 @@ value: "12345"
 "Name": "Nikola Tesla", "Id": "a0037000001pplrZZZ"
 }
 }</pre>
-<p>See the <a href="https://developer.salesforce.com/docs/atlas.en-us.api_streaming.meta/api_streaming/quick_start_workbench.htm">Quick Start Using Workbench</a> to get started or the <a href="https://developer.salesforce.com/docs/atlas.en-us.api_streaming.meta/api_streaming/" target="_blank">Streaming API documentation</a> for complete details.</p>
+<p>See the <a href="https://developer.salesforce.com/docs/atlas.en-us.api_streaming.meta/api_streaming/quick_start_workbench.htm">Quick Start Using Workbench</a> to get started or the <a href="https://developer.salesforce.com/docs/atlas.en-us.api_streaming.meta/api_streaming/">Streaming API documentation</a> for complete details.</p>
 
-# OBM
+### OBM
 
 <p>When used with an http in node, parses the XML from a Salesforce Outbound Message to a JSON object.</p>
 <p>The resulting <code>msg.payload</code> should look something like:
@@ -137,4 +137,4 @@ value: "12345"
 }</pre>
 </p>
 <p>Connect this node downstream from a POST http input node to parse the XML received from an Outbound Message call from Salesforce. Use the URL from the http in node for the Endpoint URL for your Outbound Message.</p>
-<p>See the <a href="https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_om_outboundmessaging_setting_up.htm" target="_blank">Salesforce Setting Up Outbound Messaging documentation</a> for more information.</p>
+<p>See the <a href="https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_om_outboundmessaging_setting_up.htm">Salesforce Setting Up Outbound Messaging documentation</a> for more information.</p>
