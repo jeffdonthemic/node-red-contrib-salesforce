@@ -1,0 +1,50 @@
+<script type="text/javascript">
+    RED.nodes.registerType('streaming',{
+        category: 'Salesforce',
+        color: '#C0DEED',
+        defaults: {
+          name: {value: ''},
+          pushTopic: {value: '', required: true},
+          connection: {value: '', type: 'connection-config', required: true}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "salesforce.png",
+        label: function() {
+          return this.name || 'streaming';
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="streaming">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-connection"><i class="fa fa-plug"></i> Connection</label>
+        <input type="text" id="node-input-connection">
+    </div>
+    <div class="form-row">
+        <label for="node-input-connection"><i class="fa fa-bullhorn"></i> Push Topic</label>
+        <input type="text" id="node-input-pushTopic">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="streaming">
+    <p>Creates a client that subscribes to a PushTopic for the Streaming API.</p>
+    <p>When the client receives a message it sends `msg.payload` with the following:
+    <ul><li>msg.payload.event - the information on the event that was received.</li>
+    <li>msg.payload.sobject - the sobject information received.</li>
+    </ul></p>
+    <p>Assuming the PushTopic was created with the query <code>SELECT Id, Name FROM Contact</code>, then a resulting message would look like:</p>
+<pre>{
+  "event": {
+    "type": "updated", "createdDate": "2015-07-31T18:38:21.000+0000"
+  },
+  "sobject": {
+    "Name": "Nikola Tesla", "Id": "a0037000001pplrZZZ"
+  }
+}</pre>
+    <p>See the <a href="https://developer.salesforce.com/docs/atlas.en-us.api_streaming.meta/api_streaming/quick_start_workbench.htm">Quick Start Using Workbench</a> to get started or the <a href="https://developer.salesforce.com/docs/atlas.en-us.api_streaming.meta/api_streaming/" target="_blank">Streaming API documentation</a> for complete details.</p>
+</script>
