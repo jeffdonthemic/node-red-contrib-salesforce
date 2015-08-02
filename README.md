@@ -13,7 +13,7 @@ npm install node-red-contrib-salesforce
 
 ## Usage
 
-Each node uses a connection objct to hold and share Salesforce connected app settings (consumer key, consumer secret, username, etc.). This determines the org that each node operates against.
+Each node uses a connection object to hold and share Salesforce connected app settings (consumer key, consumer secret, username, etc.). This determines the org that each node operates against.
 
 ### SOQL
 
