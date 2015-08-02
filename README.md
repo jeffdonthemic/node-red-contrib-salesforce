@@ -15,7 +15,7 @@ npm install node-red-contrib-salesforce
 
 Each node uses a connection object to hold and share Salesforce connected app settings (consumer key, consumer secret, username, etc.). This determines the org that each node operates against.
 
-### SOQL ###
+### SOQL
 
 <p>Executes a SOQL query.</p>
 <pre>
@@ -30,8 +30,7 @@ limit 2
 <p>The query can be configured in the node, however if left blank, the query should be set in an incoming message on <code>msg.query</code>.</p>
 <p>See the <a href="https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl">Salesforce SOQL documentation</a> for more information.</p>
 
-### SOSL ###
-
+<h3>SOSL</h3>
 
 <p>Executes a SOSL query.</p>
 <pre>
@@ -45,8 +44,7 @@ RETURNING Account (Id, Name), Contact (Id, Name)
 <p>The query can be configured in the node, however if left blank, the query should be set in an incoming message on <code>msg.query</code>.</p>
 <p>See the <a href="https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_sosl.htm">Salesforce SOSL documentation</a> for more information.</p>
 
-### DML ###
-
+<h3>DML</h3>
 
 <p>Executes an insert, update, upsert or delete DML statement.</p>
 <p>The action and object can be configured in the node, however if left blank, the following should be set in an incoming message:<ul><li><code>msg.action</code> - the DML action to perform</li><li><code>msg.object</code> - the sObject for the DML action</li></ul></p>
@@ -103,8 +101,7 @@ value: "12345"
 }</pre>
 <p>See the <a href="https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_dml_section.htm#apex_dml_insert">Apex DML Operations</a> for more information.</p>
 
-### Streaming ###
-
+<h3>Streaming</h3>
 
 <p>Creates a client that subscribes to a PushTopic for the Streaming API.</p>
 <p>When the client receives a message it sends `msg.payload` with the following:
@@ -122,8 +119,7 @@ value: "12345"
 }</pre>
 <p>See the <a href="https://developer.salesforce.com/docs/atlas.en-us.api_streaming.meta/api_streaming/quick_start_workbench.htm">Quick Start Using Workbench</a> to get started or the <a href="https://developer.salesforce.com/docs/atlas.en-us.api_streaming.meta/api_streaming/">Streaming API documentation</a> for complete details.</p>
 
-### OBM ###
-
+<h3>OBM</h3>
 
 <p>When used with an http in node, parses the XML from a Salesforce Outbound Message to a JSON object.</p>
 <p>The resulting <code>msg.payload</code> should look something like:
